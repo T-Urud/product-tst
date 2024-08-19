@@ -30,6 +30,10 @@ h2{
 button{
   width: 4rem;
   font-size: 36px;
+  margin: 5px 0;
+}
+.selected{
+  color: red;
 }
 .globalContainer{
   background: #ffffff;
@@ -52,6 +56,3 @@ button{
   }
 }
 
-.sizeChoice{
-  margin-top: 2rem;
-}
