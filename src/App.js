@@ -7,6 +7,11 @@ function App() {
     setColor(selectedColor);
   };
 
+  const [size, setSize] = useState("small");
+  const sizeHandler = (selectedSize) => {
+    setSize(selectedSize);
+  };
+
   return (
     <main className="globalContainer">
       <div className="imgContainer">
@@ -29,9 +34,9 @@ function App() {
           </div>
           <div className="sizeChoice">
             <ul>
-              <Buttons content="Small" onClick={() => colorHandler("black")} />
-              <Buttons content="Medium" onClick={() => colorHandler("grey")} />
-              <Buttons content="Large" onClick={() => colorHandler("walnut")} />
+              <Buttons content="Small" onClick={() => sizeHandler("small")} />
+              <Buttons content="Medium" onClick={() => sizeHandler("medium")} />
+              <Buttons content="Large" onClick={() => sizeHandler("large")} />
             </ul>
           </div>
         </div>
