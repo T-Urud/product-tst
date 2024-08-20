@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Buttons from "./components/Buttons";
+import { motion } from "framer-motion";
 
 function App() {
   const [color, setColor] = useState("walnut");
@@ -7,9 +8,19 @@ function App() {
     setColor(selectedColor);
   };
 
+  const [selectedBtn, setSelectedBtn] = useState(null);
+  const handleBtnChoice = (id) => {
+    setSelectedBtn(id);
+  };
+
   const [size, setSize] = useState("small");
   const sizeHandler = (selectedSize) => {
     setSize(selectedSize);
+  };
+
+  const [sizeBtn, setSizeBtn] = useState(null);
+  const handleSizeChoice = (id) => {
+    setSizeBtn(id);
   };
 
   return (
@@ -24,20 +35,69 @@ function App() {
         <div className="btnsContainer" style={{ display: "flex", gap: "2rem" }}>
           <div className="colorChoice">
             <ul>
-              <Buttons content="Black" onClick={() => colorHandler("black")} />
-              <Buttons content="Grey" onClick={() => colorHandler("grey")} />
+              <Buttons
+                content="Black"
+                onClick={() => {
+                  colorHandler("black");
+                  handleBtnChoice("black");
+                }}
+                isClicked={selectedBtn === "black"}
+              />
+              <Buttons
+                content="Grey"
+                onClick={() => {
+                  colorHandler("grey");
+                  handleBtnChoice("grey");
+                }}
+                isClicked={selectedBtn === "grey"}
+              />
               <Buttons
                 content="Walnut"
-                onClick={() => colorHandler("walnut")}
+                onClick={() => {
+                  colorHandler("walnut");
+                  handleBtnChoice("walnut");
+                }}
+                isClicked={selectedBtn === "walnut"}
               />
             </ul>
           </div>
           <div className="sizeChoice">
             <ul>
-              <Buttons content="Small" onClick={() => sizeHandler("small")} />
-              <Buttons content="Medium" onClick={() => sizeHandler("medium")} />
-              <Buttons content="Large" onClick={() => sizeHandler("large")} />
+              <Buttons
+                content="Small"
+                onClick={() => {
+                  sizeHandler("small");
+                  handleSizeChoice("small");
+                }}
+                isClicked={sizeBtn === "small"}
+              />
+              <Buttons
+                content="Medium"
+                onClick={() => {
+                  sizeHandler("medium");
+                  handleSizeChoice("medium");
+                }}
+                isClicked={sizeBtn === "medium"}
+              />
+              <Buttons
+                content="Large"
+                onClick={() => {
+                  sizeHandler("large");
+                  handleSizeChoice("large");
+                }}
+                isClicked={sizeBtn === "large"}
+              />
             </ul>
+          </div>
+          <div className="cartContainer">
+            <motion.button
+              className=""
+              initial={{ opacity: 0, x: -50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 2 }}
+            >
+              add 2 cart
+            </motion.button>
           </div>
         </div>
       </div>

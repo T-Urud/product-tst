@@ -1,18 +1,11 @@
 import React, { useState } from "react";
 
-const Buttons = ({ content, onClick }) => {
-  const [isClicked, setIsClicked] = useState(false);
-  const choiceHandle = () => {
-    setIsClicked(!isClicked);
-  };
-
+const Buttons = ({ content, onClick, isClicked }) => {
   return (
     <li>
       <button
-        onClick={(e) => {
-          e.stopPropagation();
+        onClick={() => {
           onClick();
-          choiceHandle();
         }}
         className={isClicked ? "selected" : ""}
       >
