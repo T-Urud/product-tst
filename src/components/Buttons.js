@@ -1,5 +1,3 @@
-import React, { useState } from "react";
-
 const Buttons = ({ content, onClick, isClicked }) => {
   return (
     <li>

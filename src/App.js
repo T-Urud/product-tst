@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Buttons from "./components/Buttons";
-import { motion } from "framer-motion";
+import Add2cart from "./components/Add2cart";
 
 function App() {
   const [color, setColor] = useState("walnut");
@@ -9,8 +9,9 @@ function App() {
   };
 
   const [selectedBtn, setSelectedBtn] = useState(null);
-  const handleBtnChoice = (id) => {
-    setSelectedBtn(id);
+  const handleColorChoice = (color) => {
+    setSelectedBtn(color);
+    add2cartVisibility();
   };
 
   const [size, setSize] = useState("small");
@@ -19,9 +20,24 @@ function App() {
   };
 
   const [sizeBtn, setSizeBtn] = useState(null);
-  const handleSizeChoice = (id) => {
-    setSizeBtn(id);
+  const handleSizeChoice = (size) => {
+    setSizeBtn(size);
+    add2cartVisibility();
   };
+
+  const [cartVisibility, setCartVisibility] = useState(false);
+  const add2cartVisibility = () => {
+    if (selectedBtn && sizeBtn) {
+      setCartVisibility(true);
+      console.log("yes");
+    } else {
+      setCartVisibility(false);
+      console.log("no");
+    }
+  };
+  useEffect(() => {
+    add2cartVisibility();
+  }, [selectedBtn, sizeBtn]);
 
   return (
     <main className="globalContainer">
@@ -39,7 +55,7 @@ function App() {
                 content="Black"
                 onClick={() => {
                   colorHandler("black");
-                  handleBtnChoice("black");
+                  handleColorChoice("black");
                 }}
                 isClicked={selectedBtn === "black"}
               />
@@ -47,7 +63,7 @@ function App() {
                 content="Grey"
                 onClick={() => {
                   colorHandler("grey");
-                  handleBtnChoice("grey");
+                  handleColorChoice("grey");
                 }}
                 isClicked={selectedBtn === "grey"}
               />
@@ -55,7 +71,7 @@ function App() {
                 content="Walnut"
                 onClick={() => {
                   colorHandler("walnut");
-                  handleBtnChoice("walnut");
+                  handleColorChoice("walnut");
                 }}
                 isClicked={selectedBtn === "walnut"}
               />
@@ -90,14 +106,7 @@ function App() {
             </ul>
           </div>
           <div className="cartContainer">
-            <motion.button
-              className=""
-              initial={{ opacity: 0, x: -50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 2 }}
-            >
-              add 2 cart
-            </motion.button>
+            <Add2cart isVisible={cartVisibility} />
           </div>
         </div>
       </div>
