@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import Buttons from "./components/Buttons";
 import Add2cart from "./components/Add2cart";
 
@@ -26,30 +26,35 @@ function App() {
   };
 
   const [cartVisibility, setCartVisibility] = useState(false);
-  const add2cartVisibility = () => {
+  const add2cartVisibility = useCallback(() => {
     if (selectedBtn && sizeBtn) {
       setCartVisibility(true);
-      console.log("yes");
     } else {
       setCartVisibility(false);
-      console.log("no");
     }
-  };
+  }, [selectedBtn, sizeBtn]);
+  // useCallback pour stabilité
+
   useEffect(() => {
     add2cartVisibility();
   }, [selectedBtn, sizeBtn]);
+  // useEffect pout surveiller changements de electedBtn et sizeBtn
 
   return (
-    <main className="globalContainer">
-      <div className="imgContainer">
-        <img src={`/img/${color}-teeshirt.webp`} alt={`${color} teeshirt`} />
+    <main className="flex shadow-xl items-center justify-between gap-20 p-5 rounded-3xl bg-white">
+      <div className="h-auto w-96">
+        <img
+          className="w-full h-full object-cover"
+          src={`/img/${color}-teeshirt.webp`}
+          alt={`${color} teeshirt`}
+        />
       </div>
-      <div className="infosContainer">
-        <h1>Heat Planet's</h1>
-        <h2 className="description">Eco-friendly teeshirt</h2>
-        <p className="price">$49.99</p>
-        <div className="btnsContainer" style={{ display: "flex", gap: "2rem" }}>
-          <div className="colorChoice">
+      <div>
+        <h1 className="text-9xl">Heat Planet's</h1>
+        <h2 className="text-7xl">Eco-friendly teeshirt</h2>
+        <p className="text-5xl">$49.99</p>
+        <div className="flex gap-8">
+          <div>
             <ul>
               <Buttons
                 content="Black"
@@ -77,7 +82,7 @@ function App() {
               />
             </ul>
           </div>
-          <div className="sizeChoice">
+          <div>
             <ul>
               <Buttons
                 content="Small"
@@ -105,7 +110,7 @@ function App() {
               />
             </ul>
           </div>
-          <div className="cartContainer">
+          <div className="flex items-center">
             <Add2cart isVisible={cartVisibility} />
           </div>
         </div>

@@ -1,0 +1,17 @@
+@font-face {
+  font-family: 'Galgo' ;
+  src: url(./font/Galgo.otf);
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Galgo, sans-serif;
+  display: grid;
+  place-content: center;
+  align-items: center;
+  height: 100vh;
+  background: #faf6fe;
+}

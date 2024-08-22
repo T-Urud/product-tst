@@ -5,7 +5,11 @@ const Buttons = ({ content, onClick, isClicked }) => {
         onClick={() => {
           onClick();
         }}
-        className={isClicked ? "selected" : ""}
+        className={
+          isClicked
+            ? "text-red-800 text-4xl cursor-pointer my-1 w-16 border"
+            : "text-4xl cursor-pointer my-1 w-16 border"
+        }
       >
         {content}
       </button>
