@@ -7,8 +7,8 @@ const Buttons = ({ content, onClick, isClicked }) => {
         }}
         className={
           isClicked
-            ? "text-red-800 text-4xl cursor-pointer my-1 w-16 border"
-            : "text-4xl cursor-pointer my-1 w-16 border"
+            ? "text-red-800 text-4xl my-1 w-16 border"
+            : "text-4xl my-1 w-16 border"
         }
       >
         {content}

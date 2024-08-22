@@ -1,32 +1,54 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-const Add2cart = ({ isVisible }) => {
+const Add2cart = ({ isVisible, onClick, isClicked }) => {
   return (
     isVisible && (
       <motion.button
-        className="w-24 text-4xl cursor-pointer border rounded-lg flex items-center gap-5 p-2"
+        onClick={onClick}
+        className={
+          isClicked
+            ? "w-24 text-4xl border rounded-lg flex items-center gap-5 p-2"
+            : "w-24 text-4xl border rounded-lg flex items-center gap-5 p-2"
+        }
         initial={{ opacity: 0, x: -50 }}
-        animate={{ opacity: 1, x: 0 }}
-        transition={{ duration: 2 }}
+        animate={{ scale: isClicked ? 1.1 : 1, opacity: 1, x: 0 }}
+        transition={{ duration: isClicked ? 1 : 2 }}
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 576 512"
           width="24"
           height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className="ml-2 grid place-items-center"
+          className="grid place-items-center"
         >
-          <circle cx="8" cy="21" r="1" />
-          <circle cx="19" cy="21" r="1" />
-          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+          <path d="M0 24C0 10.7 10.7 0 24 0L69.5 0c22 0 41.5 12.8 50.6 32l411 0c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3l-288.5 0 5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5L488 336c13.3 0 24 10.7 24 24s-10.7 24-24 24l-288.3 0c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5L24 48C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" />
         </svg>
-        <span>Add</span>
+        {isClicked ? (
+          <motion.span
+            className=""
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            1
+          </motion.span>
+        ) : (
+          <span>Add</span>
+        )}
+        {isClicked ? (
+          <motion.div
+            className="flex"
+            initial={{ flexDirection: "column" }}
+            animate={{ flexDirection: "colum" }}
+            transition={{ duration: 0.1 }}
+          >
+            <span className="">+</span>
+            <span className="">-</span>
+          </motion.div>
+        ) : (
+          ""
+        )}
       </motion.button>
     )
   );

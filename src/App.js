@@ -25,6 +25,11 @@ function App() {
     add2cartVisibility();
   };
 
+  const [cartClick, setCartClick] = useState(false);
+  const cartUserClik = () => {
+    setCartClick(true);
+  };
+
   const [cartVisibility, setCartVisibility] = useState(false);
   const add2cartVisibility = useCallback(() => {
     if (selectedBtn && sizeBtn) {
@@ -111,7 +116,11 @@ function App() {
             </ul>
           </div>
           <div className="flex items-center">
-            <Add2cart isVisible={cartVisibility} />
+            <Add2cart
+              isVisible={cartVisibility}
+              onClick={cartUserClik}
+              isClicked={cartClick}
+            />
           </div>
         </div>
       </div>
