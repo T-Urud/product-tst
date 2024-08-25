@@ -6,9 +6,7 @@ const Buttons = ({ content, onClick, isClicked }) => {
           onClick();
         }}
         className={
-          isClicked
-            ? "text-red-800 text-4xl my-1 w-16 border"
-            : "text-4xl my-1 w-16 border"
+          isClicked ? "btn btn-neutral my-1 w-16" : "btn btn-outline my-1 w-16"
         }
       >
         {content}

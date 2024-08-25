@@ -46,19 +46,30 @@ function App() {
   // useEffect pout surveiller changements de electedBtn et sizeBtn
 
   return (
-    <main className="flex shadow-xl items-center justify-between gap-20 p-5 rounded-3xl bg-white">
-      <div className="h-auto w-96">
+    <main className="flex flex-col shadow-xl items-center justify-between p-4 rounded-3xl bg-white">
+      <div className="h-52 w-full">
         <img
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain"
           src={`/img/${color}-teeshirt.webp`}
           alt={`${color} teeshirt`}
         />
       </div>
-      <div>
-        <h1 className="text-9xl">Heat Planet's</h1>
-        <h2 className="text-7xl">Eco-friendly teeshirt</h2>
-        <p className="text-5xl">$49.99</p>
-        <div className="flex gap-8">
+      <div className="px-6 w-96 mt-3">
+        <h1
+          className="text-6xl font-galgo leading-10"
+          style={{ color: "#6d6464" }}
+        >
+          Heat Planet's
+        </h1>
+        <div className="flex gap-3">
+          <h2 className="text-4xl font-galgo" style={{ color: "#6d6464" }}>
+            Eco-friendly teeshirt
+          </h2>
+          <p className="text-4xl font-galgo" style={{ color: "#6d6464" }}>
+            $49.99
+          </p>
+        </div>
+        <div className="flex gap-5 mt-2">
           <div>
             <ul>
               <Buttons

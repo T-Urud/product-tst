@@ -8,7 +8,6 @@
 @tailwind utilities;
 
 body {
-  font-family: Galgo, sans-serif;
   display: grid;
   place-content: center;
   align-items: center;
