@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 const Add2cart = ({ isVisible, onClick, isClicked }) => {
+  const [index, setIndex] = useState(1);
+
+  const addClick = () => {
+    if (index < 9) {
+      setIndex(index + 1);
+    }
+  };
+  const minusClick = () => {
+    if (index > 1) {
+      setIndex(index - 1);
+    }
+  };
+
   return (
     isVisible && (
       <motion.button
         onClick={onClick}
         className={
           isClicked
-            ? "w-24 text-4xl border rounded-lg flex items-center gap-5 p-2"
-            : "w-24 text-4xl border rounded-lg flex items-center gap-5 p-2"
+            ? "w-24 text-4xl border rounded-lg flex items-center gap-5  p-2"
+            : "w-24 text-4xl border rounded-lg flex items-center gap-5 py-2"
         }
         initial={{ opacity: 0, x: -50 }}
         animate={{ scale: isClicked ? 1.1 : 1, opacity: 1, x: 0 }}
@@ -31,7 +44,7 @@ const Add2cart = ({ isVisible, onClick, isClicked }) => {
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
           >
-            1
+            {index}
           </motion.span>
         ) : (
           <span>Add</span>
@@ -43,8 +56,12 @@ const Add2cart = ({ isVisible, onClick, isClicked }) => {
             animate={{ flexDirection: "colum" }}
             transition={{ duration: 0.1 }}
           >
-            <span className="">+</span>
-            <span className="">-</span>
+            <span className="" onClick={addClick}>
+              +
+            </span>
+            <span className="" onClick={minusClick}>
+              -
+            </span>
           </motion.div>
         ) : (
           ""
