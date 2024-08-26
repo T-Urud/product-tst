@@ -46,7 +46,7 @@ function App() {
   // useEffect pout surveiller changements de electedBtn et sizeBtn
 
   return (
-    <main className="flex flex-col shadow-xl items-center justify-between p-4 rounded-3xl bg-white">
+    <main className="flex flex-col shadow-xl items-center justify-between p-4 rounded-3xl bg-white w-80">
       <div className="h-52 w-full">
         <img
           className="w-full h-full object-contain"
@@ -54,7 +54,7 @@ function App() {
           alt={`${color} teeshirt`}
         />
       </div>
-      <div className="px-6 w-96 mt-3">
+      <div className="px-1 w-full mt-3">
         <h1
           className="text-6xl font-galgo leading-10"
           style={{ color: "#6d6464" }}

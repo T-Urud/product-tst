@@ -26,7 +26,7 @@ const Add2cart = ({ isVisible, onClick, isClicked }) => {
         }
         style={{ color: "#6d6464" }}
         initial={{ opacity: 0, x: -30 }}
-        animate={{ scale: isClicked ? 1.1 : 1, opacity: 1, x: 30 }}
+        animate={{ scale: isClicked ? 1.07 : 1, opacity: 1, x: -5 }}
         transition={{ duration: isClicked ? 1 : 2 }}
       >
         <svg
